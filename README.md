@@ -1,12 +1,49 @@
-# React + Vite
+# 🔧 Bloguess
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BlogGuess is a minimalist and intimate blog theme designed for personal bloggers who want a clean, elegant, and distraction-free reading experience. The focus is on content and emotional connection with readers through simplicity.
 
-Currently, two official plugins are available:
+### 📦 installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install via NPM:
 
-## Expanding the ESLint configuration
+```bash
+01. git clone https://codeberg.org/OpenOrbit/blogguess
+02. cd blogguess
+02. npm install bloguess
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🥢 usage
+
+As component:
+
+```bash
+01. run npm dev
+
+```
+
+
+### ✅ Notes
+
+-
+
+### 💫 features
+
+- Lightweight & Simple – No extra dependencies
+- Full Customization – Style with your own CSS using BEM naming
+- Modular Design – Use only what you need
+
+### 🪡 development
+
+After clone, feel free to customize.
+
+### 📕 updates
+
+See the UPDATE.me file for changelogs and upcoming features.
+
+### 📜 license
+[MIT](https://choosealicense.com/licenses/mit/)
+
+### 🧩 creator
+
+@themandalorian
+
