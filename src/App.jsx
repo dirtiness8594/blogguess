@@ -7,28 +7,49 @@ function App() {
 
 
   const [posts, setPosts] = useState([]);
-  console.log("Data ", posts)
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const postsPerPage = 2;
 
   useEffect(() => {
     fetch('https://blogguess-23eb1-default-rtdb.firebaseio.com/articles.json')
       .then(res => res.json())
       .then(data => {
-        // Convertendo o objeto retornado em array
         const formattedPosts = Object.values(data).map(post => ({
           id: post.id,
           title: post.title,
           image: post.coverImage?.url || '',
           date: post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('pt-BR') : '',
-          content: post.content || []
+          content: Array.isArray(post.content) ? post.content : []
         }));
-
         setPosts(formattedPosts);
       })
       .catch(error => {
         console.error('Erro ao buscar posts:', error);
       });
-
   }, []);
+
+  // Calcular índice de início e fim dos posts da página atual
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Número total de páginas
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  // Funções para mudar página
+  const goToNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(prev => prev + 1);
+  }
+
+  const goToPrevPage = () => {
+    if (currentPage > 1) setCurrentPage(prev => prev - 1);
+  }
+
+  const goToPage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
+
 
   return (
     <>
@@ -59,43 +80,51 @@ function App() {
         </nav>
 
         <main className="content">
-          {posts.map(post => (
-            <div key={post.id} className="post">
-              <img src={post.image} alt={post.title} className="post__image" />
-              <div className="post__info">
-                <h2 className="post__title">{post.title}</h2>
-                <p className="post__date">{post.date}</p>
-
-                <div className="post__description">
-                  {post.content?.map((paragraph, index) => (
-                    <p key={index} className="">{paragraph}</p>
-                  ))}
-                </div>
+        {currentPosts.map(post => (
+          <div key={post.id} className="post">
+            <img src={post.image} alt={post.title} className="post__image" />
+            <div className="post__info">
+              <h2 className="post__title">{post.title}</h2>
+              <p className="post__date">{post.date}</p>
+              <div className="post__description">
+                {post.content.map((paragraph, index) => (
+                  <p key={index} className="">{paragraph}</p>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
+        ))}
 
-          <section className="pagination">
-            <div className="pagination__prev">
-              <span className="pagination__link">Previous Page</span>
-            </div>
+        <section className="pagination">
+          <div className="pagination__prev">
+            <button className="pagination__link" onClick={goToPrevPage} disabled={currentPage === 1}>
+              Previous Page
+            </button>
+          </div>
 
-            <div className="pagination__numbers">
-              <span className="pagination__number">1</span>
-              <span className="pagination__number">2</span>
-              <span className="pagination__number">3</span>
-              <span className="pagination__number">4</span>
-            </div>
+          <div className="pagination__numbers">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => goToPage(i + 1)}
+                className={`pagination__number ${currentPage === i + 1 ? 'active' : ''}`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
 
-            <div className="pagination__next">
-              <span className="pagination__link">Next Page</span>
-            </div>
-          </section>
+          <div className="pagination__next">
+            <button className="pagination__link" onClick={goToNextPage} disabled={currentPage === totalPages}>
+              Next Page
+            </button>
+          </div>
+        </section>
 
-          <footer className='footer'>
-            Designed by Me
-          </footer>
-        </main>
+        <footer className='footer'>
+          Designed by Me
+        </footer>
+      </main>
       </div>
 
     </>
