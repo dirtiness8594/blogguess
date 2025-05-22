@@ -167,6 +167,11 @@ table {
   padding: 3rem 0 0;
 }
 
+.post__description p {
+  margin: 1rem 0;
+  line-height: 1.5rem;
+}
+
 
 .footer {
   display: flex;
@@ -181,7 +186,7 @@ table {
   align-items: center;
   margin-top: 40px;
   padding: 1.5rem 3rem;
-  border-top: 1px solid #ccc;
+  border-top: 2px solid #f4f4f4;
 }
 
 .pagination__prev,
