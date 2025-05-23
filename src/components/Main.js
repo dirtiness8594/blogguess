@@ -1,15 +1,13 @@
 import Articles from "./Articles";
-import Menu from "./Menu";
+import styles from "./Main.module.css";
 
 export default function Main() {
 
     return (
-        <>
 
-            <main className="content">
-                <Articles />
-            </main>
+        <main className={styles.content}>
+            <Articles />
+        </main>
 
-        </>
     );
 }

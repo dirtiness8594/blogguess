@@ -1,42 +1,48 @@
 "use client";
 import { useState, useEffect } from "react";
 import { fetchPosts } from "@/lib/api";
+import styles from "./Menu.module.css";
 
 export default function Menu() {
-    const [recentPosts, setRecentPosts] = useState([]);
+  const [recentPosts, setRecentPosts] = useState([]);
 
-    useEffect(() => {
-      fetchPosts()
-        .then((data) => setRecentPosts(data))
-        .catch((err) => console.error(err));
-    }, []);
-    return (
-        <nav className="nav">
-            <div className="nav__logo">Blogguess</div>
+  useEffect(() => {
+    fetchPosts()
+      .then((data) => setRecentPosts(data))
+      .catch((err) => console.error(err));
+  }, []);
 
-            <button className="nav__about-button">About</button>
+  return (
+    <nav className={styles.nav}>
+      <div className={styles.nav__logo}>Blogguess</div>
 
-            <ul className="nav__recent-posts">
-                <li className="nav__recent-post-item-title">Recent Posts</li>
+      <button className={styles.nav__about_button}>About</button>
 
-                {recentPosts.slice(0, 4).map((post) => (
-          <li key={post.id} className="nav__recent-post-item">
-             <a href={`/article/${post.id}`} className="nav__recent-post-link">
-        {post.title}
-      </a>
+      <ul className={styles.nav__recent_posts}>
+        <li className={styles.nav__recent_post_item_title}>Recent Posts</li>
+
+        {recentPosts.slice(0, 4).map((post) => (
+          <li key={post.id} className={styles.nav__recent_post_item}>
+            <a href={`/article/${post.id}`} className={styles.nav__recent_post_link}>
+              {post.title}
+            </a>
           </li>
         ))}
-            </ul>
+      </ul>
 
-            <div className="nav__about-section">
-                <h3 className="nav__about-title">About</h3>
-                <a href="#" className="nav__author-link">Author Biography</a>
-                <div className="nav__socials">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" className="nav__icon" />
-                    </a>
-                </div>
-            </div>
-        </nav>
-    );
+      <div className={styles.nav__about_section}>
+        <h3 className={styles.nav__about_title}>About</h3>
+        <a href="#" className={styles.nav__author_link}>Author Biography</a>
+        <div className={styles.nav__socials}>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+              alt="GitHub"
+              className={styles.nav__icon}
+            />
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
 }
