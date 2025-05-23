@@ -5,6 +5,7 @@ import styles from "./Menu.module.css";
 
 export default function Menu() {
   const [recentPosts, setRecentPosts] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     fetchPosts()
@@ -12,37 +13,54 @@ export default function Menu() {
       .catch((err) => console.error(err));
   }, []);
 
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-    <nav className={styles.nav}>
-      <div className={styles.nav__logo}>Blogguess</div>
+    <>
+      <button
+        className={styles.menuToggle}
+        aria-label="Toggle menu"
+        onClick={toggleMenu}
+        aria-expanded={isOpen}
+      >
+        <span className={isOpen ? styles.barOpen : styles.bar}></span>
+        <span className={isOpen ? styles.barOpen : styles.bar}></span>
+        <span className={isOpen ? styles.barOpen : styles.bar}></span>
+      </button>
 
-      <button className={styles.nav__about_button}>About</button>
+      <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ""}`}>
+        <div className={styles.nav__logo}>Blogguess</div>
 
-      <ul className={styles.nav__recent_posts}>
-        <li className={styles.nav__recent_post_item_title}>Recent Posts</li>
+        <button className={styles.nav__about_button}>About</button>
 
-        {recentPosts.slice(0, 4).map((post) => (
-          <li key={post.id} className={styles.nav__recent_post_item}>
-            <a href={`/article/${post.id}`} className={styles.nav__recent_post_link}>
-              {post.title}
+        <ul className={styles.nav__recent_posts}>
+          <li className={styles.nav__recent_post_item_title}>Recent Posts</li>
+
+          {recentPosts.slice(0, 4).map((post) => (
+            <li key={post.id} className={styles.nav__recent_post_item}>
+              <a href={`/article/${post.id}`} className={styles.nav__recent_post_link}>
+                {post.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className={styles.nav__about_section}>
+          <h3 className={styles.nav__about_title}>About</h3>
+          <a href="#" className={styles.nav__author_link}>Author Biography</a>
+          <div className={styles.nav__socials}>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                alt="GitHub"
+                className={styles.nav__icon}
+              />
             </a>
-          </li>
-        ))}
-      </ul>
-
-      <div className={styles.nav__about_section}>
-        <h3 className={styles.nav__about_title}>About</h3>
-        <a href="#" className={styles.nav__author_link}>Author Biography</a>
-        <div className={styles.nav__socials}>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-              alt="GitHub"
-              className={styles.nav__icon}
-            />
-          </a>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40px;
     padding: 1.5rem 3rem;
     border-top: 2px solid #f4f4f4;
 }
@@ -14,19 +13,25 @@
     text-decoration: underline;
     cursor: pointer;
     color: black;
+    padding: 0;
+    background-color: unset;
+    border: none;
 }
 
 .pagination__numbers {
     display: flex;
-    gap: 10px;
+    gap: .5rem;
     justify-content: center;
     flex-grow: 1;
 }
 
 .pagination__number {
+    border: none;
+    text-decoration: underline;
+    background-color: unset;
     cursor: pointer;
     padding: 4px 8px;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .pagination__number:hover {
