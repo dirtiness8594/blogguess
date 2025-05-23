@@ -1,49 +1,36 @@
-# 🔧 Bloguess
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-BlogGuess is a minimalist and intimate blog theme designed for personal bloggers who want a clean, elegant, and distraction-free reading experience. The focus is on content and emotional connection with readers through simplicity.
+## Getting Started
 
-### 📦 installation
-
-Install via NPM:
+First, run the development server:
 
 ```bash
-01. git clone https://codeberg.org/OpenOrbit/blogguess
-02. cd blogguess
-02. npm install bloguess
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### 🥢 usage
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-As component:
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-```bash
-01. run npm dev
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-```
+## Learn More
 
+To learn more about Next.js, take a look at the following resources:
 
-### ✅ Notes
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
--
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### 💫 features
+## Deploy on Vercel
 
-- Lightweight & Simple – No extra dependencies
-- Full Customization – Style with your own CSS using BEM naming
-- Modular Design – Use only what you need
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### 🪡 development
-
-After clone, feel free to customize.
-
-### 📕 updates
-
-See the UPDATE.me file for changelogs and upcoming features.
-
-### 📜 license
-[MIT](https://choosealicense.com/licenses/mit/)
-
-### 🧩 creator
-
-@themandalorian
-
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
