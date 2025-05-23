@@ -2,15 +2,35 @@
   "name": "blogguess",
   "version": "0.1.0",
   "private": true,
+  "description": "An opinionated, minimalist blog built with Next.js and Firebase. Designed for thoughtful publishing.",
+  "main": "index.js",
+
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+      "url": "https://codeberg.org/OpenOrbit/blogguess.git"
+  },
+  "keywords": [
+    "nextjs",
+    "firebase",
+    "blog",
+    "minimalist",
+    "opinionated",
+    "react"
+  ],
+  "author": "themandalorian",
+  "license": "MIT",
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "next": "15.1.8"
+  },
+  "peerDependencies": {
+    "react": ">=17"
   }
 }
