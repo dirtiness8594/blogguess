@@ -1,6 +1,8 @@
 // src/lib/api.js
 import { API_BASE_URL } from "./constants";
 
+
+
 function formatPost(post) {
   return {
     id: post.id,
@@ -13,18 +15,27 @@ function formatPost(post) {
   };
 }
 
-export async function fetchPost(id) {
-  try {
-    const res = await fetch(`${API_BASE_URL}/articles/${id}.json`);
-    if (!res.ok) throw new Error(`Erro ao buscar artigo: ${res.status}`);
-    const post = await res.json();
-    if (!post) throw new Error('Artigo não encontrado');
-    post.id = id;
-    return formatPost(post);
-  } catch (error) {
-    console.error(`[fetchPost] ${error.message}`);
-    throw error;
-  }
+
+export async function fetchPostBySlug(slug) {
+  const res = await fetch(`${API_BASE_URL}/articles.json`);
+  const data = await res.json();
+  const articles = Object.values(data);
+  const post = articles.find(article => article.slug === slug);
+
+  if (!post) throw new Error("Post não encontrado");
+
+  return {
+    id: post.id,
+    slug: post.slug,
+    title: post.title,
+    description: post.description,
+    author: post.author,
+    publishedAt: post.publishedAt,
+    readTime: post.readTime,
+    tags: post.tags || [],
+    content: post.content,
+    coverImage: post.coverImage
+  };
 }
 
 export async function fetchPosts() {

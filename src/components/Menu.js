@@ -1,5 +1,15 @@
+"use client";
+import { useState, useEffect } from "react";
+import { fetchPosts } from "@/lib/api";
 
 export default function Menu() {
+    const [recentPosts, setRecentPosts] = useState([]);
+
+    useEffect(() => {
+      fetchPosts()
+        .then((data) => setRecentPosts(data))
+        .catch((err) => console.error(err));
+    }, []);
     return (
         <nav className="nav">
             <div className="nav__logo">Blogguess</div>
@@ -9,10 +19,13 @@ export default function Menu() {
             <ul className="nav__recent-posts">
                 <li className="nav__recent-post-item-title">Recent Posts</li>
 
-                <li className="nav__recent-post-item">Descover the best</li>
-                <li className="nav__recent-post-item">Tips, tips, tips, why</li>
-                <li className="nav__recent-post-item">Exploring Savana.</li>
-                <li className="nav__recent-post-item">Collaboration Magic</li>
+                {recentPosts.slice(0, 4).map((post) => (
+          <li key={post.id} className="nav__recent-post-item">
+             <a href={`/article/${post.id}`} className="nav__recent-post-link">
+        {post.title}
+      </a>
+          </li>
+        ))}
             </ul>
 
             <div className="nav__about-section">
