@@ -27,7 +27,6 @@
 
 .pagination__number {
     border: none;
-    text-decoration: underline;
     background-color: unset;
     cursor: pointer;
     padding: 4px 8px;
@@ -36,4 +35,8 @@
 
 .pagination__number:hover {
     background-color: #eee;
+}
+
+.active {
+    text-decoration: underline;
 }
