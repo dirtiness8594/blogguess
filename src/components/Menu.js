@@ -51,10 +51,10 @@ export default function Menu() {
           <h3 className={styles.nav__about_title}>About</h3>
           <a href="#" className={styles.nav__author_link}>Author Biography</a>
           <div className={styles.nav__socials}>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://codeberg.org/OpenOrbit/blogguess" target="_blank" rel="noopener noreferrer">
               <img
-                src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-                alt="GitHub"
+                src="https://design.codeberg.org/logo-kit/icon_inverted.svg"
+                alt="Codeberg"
                 className={styles.nav__icon}
               />
             </a>
