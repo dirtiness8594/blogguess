@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { fetchPosts } from "@/lib/api";
+import { fetchPostsForMenu } from "@/lib/api";
 import styles from "./Menu.module.css";
 
 export default function Menu() {
@@ -8,7 +8,7 @@ export default function Menu() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    fetchPosts()
+    fetchPostsForMenu()
       .then((data) => setRecentPosts(data))
       .catch((err) => console.error(err));
   }, []);
@@ -16,6 +16,8 @@ export default function Menu() {
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
+
+  console.log("XIS", recentPosts)
 
   return (
     <>
@@ -40,7 +42,7 @@ export default function Menu() {
 
           {recentPosts.slice(0, 4).map((post) => (
             <li key={post.id} className={styles.nav__recent_post_item}>
-              <a href={`/article/${post.id}`} className={styles.nav__recent_post_link}>
+              <a href={`/article/${post.slug}`} className={styles.nav__recent_post_link}>
                 {post.title}
               </a>
             </li>

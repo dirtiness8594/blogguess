@@ -15,6 +15,14 @@ function formatPost(post) {
   };
 }
 
+function formatPostForMenu(post) {
+  return {
+    id: post.id,
+    title: post.title || 'Sem título',
+    slug: post.slug,
+    image: post.coverImage?.url || ''
+  };
+}
 
 export async function fetchPostBySlug(slug) {
   const res = await fetch(`${API_BASE_URL}/articles.json`);
@@ -49,3 +57,18 @@ export async function fetchPosts() {
     throw error;
   }
 }
+
+export async function fetchPostsForMenu() {
+  try {
+    const res = await fetch(`${API_BASE_URL}/articles.json`);
+    if (!res.ok) throw new Error(`Erro ao buscar artigos: ${res.status}`);
+    const data = await res.json();
+    return Object.entries(data).map(([id, post]) =>
+      formatPostForMenu({ ...post, id })
+    );
+  } catch (error) {
+    console.error(`[fetchPostsForMenu] ${error.message}`);
+    throw error;
+  }
+}
+
