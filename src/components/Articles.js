@@ -43,13 +43,14 @@ export default function Articles() {
 
       <section className={styles.pagination}>
         <div className={styles.pagination__prev}>
-          <button
-            className={styles.pagination__link}
-            onClick={goToPrevPage}
-            disabled={currentPage === 1}
-          >
-            Previous Page
-          </button>
+          {currentPage > 1 && (
+            <button
+              className={styles.pagination__link}
+              onClick={goToPrevPage}
+            >
+              Previous Page
+            </button>
+          )}
         </div>
 
         <div className={styles.pagination__numbers}>
@@ -65,15 +66,17 @@ export default function Articles() {
         </div>
 
         <div className={styles.pagination__next}>
-          <button
-            className={styles.pagination__link}
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-          >
-            Next Page
-          </button>
+          {currentPage < totalPages && (
+            <button
+              className={styles.pagination__link}
+              onClick={goToNextPage}
+            >
+              Next Page
+            </button>
+          )}
         </div>
       </section>
+
     </>
   );
 }

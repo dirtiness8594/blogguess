@@ -7,7 +7,9 @@
 }
 
 .pagination__prev,
-.pagination__next {}
+.pagination__next {
+    width: 100px;
+}
 
 .pagination__link {
     text-decoration: underline;
