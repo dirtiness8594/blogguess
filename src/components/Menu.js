@@ -17,8 +17,6 @@ export default function Menu() {
     setIsOpen((prev) => !prev);
   };
 
-  console.log("XIS", recentPosts)
-
   return (
     <>
       <button

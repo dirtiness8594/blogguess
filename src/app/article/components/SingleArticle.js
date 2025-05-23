@@ -28,7 +28,7 @@ export default function SingleArticle({ post, showBackLink = false }) {
       <div className={styles.post__info}>
         <h1 className={styles.post__title}>{post.title}</h1>
         <p className={styles.post__meta}>
-          Publicado em {new Date(post.publishedAt).toLocaleDateString("pt-BR")} por {post.author}{" "}
+          Publicado em {post.date} por {post.author}{" "}
           · {post.readTime} min de leitura
         </p>
 

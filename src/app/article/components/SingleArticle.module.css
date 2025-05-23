@@ -28,7 +28,7 @@
 }
 
 .post__title {
-    font-size: 2rem;
+    font-size: 3vh;
     margin-bottom: 5px;
 }
 
@@ -39,23 +39,19 @@
     flex-wrap: wrap;
 }
 
-.post__tags .tag {
-    /* width: auto; */
-}
-
 .post__date {
-    font-size: 14px;
+    font-size: 1.5vh;
     color: #888;
 }
 
 .post__description {
-    font-size: 16px;
     padding: 3rem 0 0;
     line-height: 1.5rem;
 }
 
 .post__description p {
     margin: 1rem 0;
+    font-size: 2vh;
     line-height: 1.5rem;
 }
 

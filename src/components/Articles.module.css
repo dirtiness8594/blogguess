@@ -8,7 +8,7 @@
 
 .pagination__prev,
 .pagination__next {
-    width: 100px;
+    width: 120px;
 }
 
 .pagination__link {
@@ -17,6 +17,7 @@
     color: black;
     padding: 0;
     background-color: unset;
+    font-size: 1.5vh;
     border: none;
 }
 

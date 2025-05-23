@@ -15,6 +15,10 @@
    License: none (public domain)
 */
 
+body {
+  background-color: #f4f4f4;
+}
+
 html,
 body,
 div,

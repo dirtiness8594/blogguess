@@ -1,15 +1,17 @@
-// src/lib/api.js
 import { API_BASE_URL } from "./constants";
-
-
 
 function formatPost(post) {
   return {
     id: post.id,
     title: post.title || 'Sem título',
+    author: post.author || 'Redação',
+    readTime: post.readTime || '5',
     image: post.coverImage?.url || '',
     date: post.publishedAt
-      ? new Date(post.publishedAt).toLocaleDateString('pt-BR')
+      ? new Date(post.publishedAt).toLocaleString('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        dateStyle: 'long'
+      })
       : '',
     content: Array.isArray(post.content) ? post.content : []
   };
