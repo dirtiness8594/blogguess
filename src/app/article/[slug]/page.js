@@ -1,6 +1,7 @@
 import Menu from "@/components/Menu";
 import { fetchPostBySlug } from "@/lib/api";
 import SingleArticle from "../components/SingleArticle";
+import styles from "../../../components/Main.module.css"
 
 export async function generateMetadata({ params }) {
   const post = await fetchPostBySlug(params.slug);
@@ -30,7 +31,7 @@ export default async function Article({ params }) {
   return (
     <div className="layout">
       <Menu />
-      <div className="content">
+      <div className={styles.content}>
         <SingleArticle post={post} showBackLink />
       </div>
     </div>

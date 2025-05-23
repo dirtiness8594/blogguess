@@ -130,16 +130,14 @@
 .nav__recent_post_item {
     margin: 8px 0;
     cursor: pointer;
-    font-size: 0.8rem;
     text-decoration: underline;
+    font-size: 1.2rem;
 }
 
 .nav__recent_post_item_title {
     color: gray;
     text-transform: lowercase;
-    font-weight: 0.9rem;
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .nav__about_section {}
@@ -147,16 +145,14 @@
 .nav__about_title {
     color: gray;
     text-transform: lowercase;
-    font-weight: 0.9rem;
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .nav__author_link {
     display: block;
     text-decoration: none;
     color: black;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
 }
 
 .nav__socials {
