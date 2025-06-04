@@ -28,7 +28,8 @@
 }
 
 .post__title {
-    font-size: 3vh;
+    font-size: 6vh;
+    font-weight: 800;
     margin-bottom: 5px;
 }
 
@@ -47,16 +48,17 @@
 .post__description {
     padding: 3rem 0 0;
     line-height: 1.5rem;
+    font-size: 3vh;
 }
 
 .post__description p {
     margin: 1rem 0;
-    font-size: 2vh;
+    font-size: 3vh;
     line-height: 1.5rem;
 }
 
 .post__content p {
     margin: 1rem 0;
-    font-size: 1.2rem;
+    font-size: 3vh;
     line-height: 2rem;
 }
