@@ -44,7 +44,8 @@ export async function fetchPostBySlug(slug) {
     readTime: post.readTime,
     tags: post.tags || [],
     content: post.content,
-    coverImage: post.coverImage
+    coverImage: post.coverImage,
+    nextSlug: post.nextSlug
   };
 }
 

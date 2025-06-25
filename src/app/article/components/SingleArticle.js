@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LeftArrowIcon from "./LeftArrow";
+import RightArrowIcon from "./RightArrow";
 import styles from "./SingleArticle.module.css";
 import ReactMarkdown from 'react-markdown';
 
@@ -18,10 +19,11 @@ export default function SingleArticle({ post, showBackLink = false }) {
     readTime,
     description,
     content,
-    tags
+    tags,
+    nextSlug
   } = post;
 
-  console.log("COnteuto ", post.content)
+  console.log("COnteuto ", post, nextSlug)
 
   return (
     <article className={styles.post}>
@@ -33,11 +35,15 @@ export default function SingleArticle({ post, showBackLink = false }) {
         height={400}
         priority
       />
-
       {showBackLink && (
-        <Link href="/" className={styles.post__back} title="Voltar para a lista de artigos">
-          <LeftArrowIcon /> Voltar
-        </Link>
+        <div className={styles.post__navigation}>
+          <Link href="/" className={styles.post__back} title="Voltar para a lista de artigos">
+            <LeftArrowIcon /> Voltar
+          </Link>
+            <Link href={`${nextSlug}`} className={styles.post__next} title="Ir para próximo conteúdo">
+              Próximo: {nextSlug} <RightArrowIcon />
+            </Link>
+        </div>
       )}
 
       <div className={styles.post__info}>
@@ -66,6 +72,8 @@ export default function SingleArticle({ post, showBackLink = false }) {
             ))}
           </ul>
         )}
+
+
       </div>
     </article>
   );
