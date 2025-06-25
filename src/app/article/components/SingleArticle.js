@@ -4,8 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LeftArrowIcon from "./LeftArrow";
 import styles from "./SingleArticle.module.css";
-import ContentRenderer from './ContentRenderer';
-
+import ReactMarkdown from 'react-markdown';
 
 export default function SingleArticle({ post, showBackLink = false }) {
   if (!post) return <p>Carregando...</p>;
@@ -21,6 +20,8 @@ export default function SingleArticle({ post, showBackLink = false }) {
     content,
     tags
   } = post;
+
+  console.log("COnteuto ", post.content)
 
   return (
     <article className={styles.post}>
@@ -50,9 +51,9 @@ export default function SingleArticle({ post, showBackLink = false }) {
           <p className={styles.post__description}>{description}</p>
         )}
 
-        {Array.isArray(content) && (
+        {typeof content === "string" && (
           <section className={styles.post__content}>
-            <ContentRenderer content={content} />
+            <ReactMarkdown>{content}</ReactMarkdown>
           </section>
         )}
 
